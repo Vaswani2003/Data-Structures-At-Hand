@@ -43,7 +43,7 @@ def linear_search(element,arr):
 
 # ------------------------------------------------------------------------------------------------ #
 
-# Running the code. 
+# Running the code.
 
 data = npa(random.sample(range(0,100),25))
 
