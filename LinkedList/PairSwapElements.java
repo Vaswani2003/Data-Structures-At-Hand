@@ -1,5 +1,5 @@
 import java.util.*;
-public class NthNodeFromEnd{
+public class PairSwapElements{
 
     static class LinkedList{
             class Node{
@@ -44,33 +44,23 @@ public class NthNodeFromEnd{
                                             cur = cur.next;
                                     }
                             }
-                    
                     }
 
-                    public void findNthNodefromEnd(int n){
+                    public void pairSwap(){
                         Node cur = head;
-                        int len = 1;
 
-                        while(cur != null){
-                            cur = cur.next;
-                            len++;
+                        if(cur == null || cur.next == null){
+                            return;
                         }
+                        else{
+                            while(cur.next.next != null){
+                                int temp = cur.data;
+                                cur.data = cur.next.data;
+                                cur.next.data = temp;
 
-                        int cnt = 1;
-                        cur = head;
-
-                        while(cur != null){
-                            if(cnt == len-n){
-                                System.out.println(cur.data + " is the nth node element in the list");
-                                break;
+                                cur = cur.next;
                             }
-                            cur = cur.next;
-                            cnt++;
                         }
-                      
-                      if(n>len){
-                      System.out.println("There is no nth node in the list");
-                      }
                     }
             }
     
@@ -84,11 +74,9 @@ public class NthNodeFromEnd{
               	if(temp<0){break;}
               	list.insert(temp);
             }
-      		System.out.println("Enter the nth node:");
-      		int n = sc.nextInt();
-      	
-      		list.findNthNodefromEnd(n);
-
+            
+            list.pairSwap();
+            list.display();
             sc.close();
     }
 }
