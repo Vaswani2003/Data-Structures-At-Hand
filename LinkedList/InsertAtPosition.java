@@ -1,5 +1,4 @@
-public class DeleteAtTail {
-
+public class InsertAtPosition {
         static class LinkedList{
                 class Node{
                         int data;
@@ -32,21 +31,26 @@ public class DeleteAtTail {
                                 System.out.println("Element inserted successfully");
                         }
 
-                        public void deleteAtTail(){
-
+                        public void insertAtPosition(int val,int position){
                             Node cur = head;
+                            Node newNode = new Node(val);
 
-                            if(cur == null){
-                                System.out.println("List is empty");
+                            if (cur == null){
+                                head = newNode;
                             }
                             else{
-                                while(cur.next.next != null){
+                                int cnt = 1;
+                                while (cur != null){
+                                    if(cnt == position-1){
+                                        newNode.next = cur.next;
+                                        cur.next = newNode;
+                                        break;
+                                    }
                                     cur = cur.next;
+                                    cnt++;
                                 }
-                                cur.next = null;
                             }
                         }
-
 
                         public void display(){
                                 if (head == null){
@@ -75,9 +79,9 @@ public class DeleteAtTail {
 
                 list.display();
 
-                list.deleteAtTail();
-
-                list.display();       
+                list.insertAtPosition(15,3);
+                list.display();
+                
         }
 }
 
