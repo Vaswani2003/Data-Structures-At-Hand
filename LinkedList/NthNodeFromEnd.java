@@ -32,45 +32,25 @@ public class NthNodeFromEnd{
 
                     }
 
-                    public void display(){
-                            if (head == null){
-                                    System.out.println("List is empty");
-                            }
-                            else{
-                                    Node cur = head;
-
-                                    while (cur != null){
-                                            System.out.print(cur.data + " ");
-                                            cur = cur.next;
-                                    }
-                            }
-                    
-                    }
-
                     public void findNthNodefromEnd(int n){
-                        Node cur = head;
-                        int len = 1;
+                       Node delimiter = head;
 
-                        while(cur != null){
-                            cur = cur.next;
-                            len++;
+                       for(int i=0; i < n; i++){
+                        if(delimiter == null){
+                            System.out.println("There is no nth node in the list");
+                            return;
                         }
+                        delimiter = delimiter.next;
+                       }
 
-                        int cnt = 1;
-                        cur = head;
+                       Node res = head;
 
-                        while(cur != null){
-                            if(cnt == len-n){
-                                System.out.println(cur.data + " is the nth node element in the list");
-                                break;
-                            }
-                            cur = cur.next;
-                            cnt++;
-                        }
-                      
-                      if(n>len){
-                      System.out.println("There is no nth node in the list");
-                      }
+                       while(delimiter != null){
+                        res = res.next;
+                        delimiter = delimiter.next;
+                       }
+
+                          System.out.println("The nth node from the end is: " + res.data);
                     }
             }
     

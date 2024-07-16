@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class InsertCircularLL {
+public class InsertCircularLL{
     static class CLL{
         class Node{
             int data;
@@ -33,10 +33,11 @@ public class InsertCircularLL {
         public void display(){
             Node cur = head;
 
-            while(cur != head){
+            while(cur.next != head){
                 System.out.print(cur.data + " ");
                 cur = cur.next;
             }
+          System.out.println(cur.data);
         }
     }
 
@@ -45,15 +46,13 @@ public class InsertCircularLL {
         Scanner sc = new Scanner(System.in);
 
         while(true){
-            int signal = sc.nextInt();
-
-            if(signal == 1){
-                int val = sc.nextInt();
-                circular.insert(val);
-            }
-            else{
-                circular.display();
-                break;
+            int val = sc.nextInt();
+          	circular.insert(val);
+          
+          	int signal = sc.nextInt();
+          	if(signal == 0){
+            	circular.display();
+              	break;
             }
         }
 
