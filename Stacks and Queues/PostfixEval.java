@@ -3,7 +3,7 @@ import java.util.*;
 class PostfixEval
 {
   static int postfixEval(String expr){
-  	 Stack<Integer> stack = new Stack();
+  	 Stack<Integer> stack = new Stack<>();
     	
         int n = expr.length(); 
 

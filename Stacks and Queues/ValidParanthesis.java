@@ -2,7 +2,7 @@ import java.util.*;
 
 public class ValidParanthesis {
     public static void main(String[] args){
-        Stack<Character> stack = new Stack();
+        Stack<Character> stack = new Stack<>();
         Scanner sc = new Scanner(System.in);
 
         String str = sc.next();
@@ -14,6 +14,8 @@ public class ValidParanthesis {
             sc.close();
             return;
         }
+
+        sc.close();
 
         int i;
         for(i=0; i < n; i++){
@@ -48,7 +50,5 @@ public class ValidParanthesis {
         if(stack.isEmpty()){
             System.out.println("Balanced");
         }
-
-        sc.close();
     }
 }
