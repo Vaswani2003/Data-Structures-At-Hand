@@ -67,5 +67,7 @@ public class StackUsingLL {
         }
 
         stack.display();
+
+        sc.close();
     }
 }
