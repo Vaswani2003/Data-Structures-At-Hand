@@ -1,8 +1,8 @@
 package BST;
 
-import java.util.Scanner;
+import java.util.*;
 
-public class searchBST{
+public class BST_Elements_In_A_Range{
 
     static class Node{
         int data;
@@ -19,6 +19,7 @@ public class searchBST{
     static class BST{
 
         Node root;
+        Queue<Integer> q = new LinkedList<Integer>();
 
         Node insert(Node root, int data){
             if (root == null){
@@ -33,22 +34,20 @@ public class searchBST{
             return root;
         }
 
-        boolean search(Node root, int target){
+        void search(Node root, int low, int high){
 
-            if (root == null){
-                return false;
-            }
-            else if(root.data == target){
-                return true;
+            if(root == null){
+                return;
             }
 
-            else if (root.data > target){
-                return search(root.right, target);
-            }
-            else{
-                return search(root.left, target);
+            search(root.left, low, high);
+
+            if (low <= root.data && root.data <= high){
+                q.add(root.data);
             }
 
+            search(root.right, low, high);
+            
         }
 
        
@@ -66,11 +65,14 @@ public class searchBST{
             bst.root = bst.insert(bst.root, data);
         }
 
-        int target = sc.nextInt();
+        int low = sc.nextInt();
+        int high = sc.nextInt();
 
-        boolean found = bst.search(bst.root, target);
+        bst.search(bst.root, low, high);
 
-        System.out.println(found);
+        for(int each: bst.q){
+            System.out.print(each + " ");
+        }
 
         sc.close();
 
