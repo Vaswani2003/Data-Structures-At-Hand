@@ -48,34 +48,34 @@ class AdjacencyMatrix{
     }
 
     public static void main(String[] a){
-        Scanner sc = new Scanner(System.in);
+        try (Scanner sc = new Scanner(System.in)) {
+            System.out.println("Please enter the number of nodes in the graph");
+            int V = sc.nextInt();
 
-        System.out.println("Please enter the number of nodes in the graph");
-        int V = sc.nextInt();
+            System.out.println("Please enter the number of edges in the graph");
+            int E = sc.nextInt();
 
-        System.out.println("Please enter the number of edges in the graph");
-        int E = sc.nextInt();
+            System.out.println("Is the graph directed");
+            String directed = sc.next();
 
-        System.out.println("Is the graph directed");
-        String directed = sc.next();
+            boolean isDirected = directed.equals("yes") ? true : false;
 
-        boolean isDirected = directed.equals("yes") ? true : false;
+            Graph graph = new Graph(V, E, isDirected);
+            graph.printAdjacencyMatrix();
 
-        Graph graph = new Graph(V, E, isDirected);
-        graph.printAdjacencyMatrix();
+            int i;
 
-        int i;
+            for(i=0; i < E; i++){
+                System.out.println("Enter the start node, end node and weight of edge no "+(i+1));
+                int source = sc.nextInt();
+                int desti = sc.nextInt();
+                int weight = sc.nextInt();
 
-        for(i=0; i < E; i++){
-            System.out.println("Enter the start node, end node and weight of edge no "+(i+1));
-            int source = sc.nextInt();
-            int desti = sc.nextInt();
-            int weight = sc.nextInt();
+                graph.addEdge(source-1, desti-1, weight);
+            }
 
-            graph.addEdge(source-1, desti-1, weight);
+            graph.printAdjacencyMatrix();
+            sc.close();
         }
-
-        graph.printAdjacencyMatrix();
-        
     }
 }
