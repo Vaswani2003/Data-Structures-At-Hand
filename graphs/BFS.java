@@ -71,9 +71,7 @@ public class BFS {
             }
 
             g.bfs();
-        }
-
-    
+        }    
 
         sc.close();
     }
